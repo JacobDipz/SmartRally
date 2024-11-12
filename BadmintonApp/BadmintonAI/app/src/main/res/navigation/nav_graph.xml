@@ -30,5 +30,11 @@
         <action
             android:id="@+id/action_editLogFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+
+        <argument
+            android:name="log"
+            app:argType="com.example.badmintonai.model.Log"
+            app:nullable="true"/>
+
     </fragment>
 </navigation>

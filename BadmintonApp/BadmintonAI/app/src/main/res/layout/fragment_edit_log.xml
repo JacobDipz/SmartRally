@@ -18,10 +18,10 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins"
-            android:text="Edit Log."
-            android:textStyle="bold"
+            android:text="Edit Log"
             android:textColor="@color/red"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editLogTitle"

@@ -9,12 +9,12 @@ plugins {
 
 android {
     namespace = "com.example.badmintonai"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.badmintonai"
         minSdk = 28
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
