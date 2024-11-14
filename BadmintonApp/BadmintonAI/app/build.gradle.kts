@@ -39,9 +39,9 @@ android {
     }
     buildFeatures {
         dataBinding = true
+        buildConfig = true
     }
 }
-
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -58,14 +58,14 @@ dependencies {
     implementation ("androidx.room:room-runtime:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation ("androidx.room:room-ktx:$roomVersion")
     // Navigation
-    val navVersion = "2.7.5"
+    val navVersion = "2.8.3"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
     // Life Cycle Arch
-    val lifecycleVersion = "2.6.2"
+    val lifecycleVersion = "2.8.7"
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     // LiveData
