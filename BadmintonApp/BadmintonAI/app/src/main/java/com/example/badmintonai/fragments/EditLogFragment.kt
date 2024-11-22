@@ -1,6 +1,7 @@
 package com.example.badmintonai.fragments
 
 import android.app.AlertDialog
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +10,9 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.MediaController
 import android.widget.Toast
+import android.widget.VideoView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
@@ -48,6 +51,17 @@ class EditLogFragment : Fragment(R.layout.fragment_edit_log), MenuProvider {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val videoView = view.findViewById<VideoView>(R.id.simpleVideoView)
+        val packageName = "android.resource://" + requireContext().packageName + "/"+ R.raw.example_video
+        val uri = Uri.parse(packageName)
+        videoView.setVideoURI(uri)
+        videoView.start()
+
+        val mediaController = MediaController(context)
+        mediaController.setAnchorView(videoView)
+        videoView.setMediaController(mediaController)
+
+
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
@@ -59,10 +73,10 @@ class EditLogFragment : Fragment(R.layout.fragment_edit_log), MenuProvider {
 
         binding.editLogFab.setOnClickListener{
             val logTitle = binding.editLogTitle.text.toString().trim()
-            val logDesc = binding.editLogDesc.text.toString().trim()
+            //val logDesc = binding.editLogDesc.text.toString().trim()
 
             if(logTitle.isNotEmpty()){
-                val log = Log(currentLog.id, logTitle, logDesc)
+                val log = Log(currentLog.id, logTitle, currentLog.logDesc)
                 logViewModel.updateLog(log)
                 view.findNavController().popBackStack(R.id.homeFragment, false)
             } else {
