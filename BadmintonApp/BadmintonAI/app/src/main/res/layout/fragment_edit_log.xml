@@ -18,7 +18,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins"
-            android:text="Edit Log"
+            android:text="View Log"
             android:textColor="@color/red"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -36,18 +36,18 @@
             android:maxLines="1"
             android:fontFamily="@font/poppins"/>
 
-        <EditText
+        <TextView
             android:id="@+id/editLogDesc"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Enter the description"
-            android:gravity="top"
-            android:padding="12dp"
-            android:textSize="18sp"
-            android:fontFamily="@font/poppins"
+            android:layout_width="388dp"
+            android:layout_height="554dp"
+            android:layout_below="@id/simpleVideoView"
+            android:layout_marginTop="12dp"
             android:background="@drawable/pink_border"
-            android:layout_below="@id/editLogTitle"
-            android:layout_marginTop="12dp" />
+            android:fontFamily="@font/poppins"
+            android:gravity="top"
+            android:hint="Enter the description"
+            android:padding="12dp"
+            android:textSize="18sp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/editLogFab"
@@ -62,6 +62,17 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:contentDescription="editFab" />
+
+        <VideoView
+            android:id="@+id/simpleVideoView"
+            android:layout_width="wrap_content"
+            android:layout_height="194dp"
+            android:layout_below="@+id/editLogTitle"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="12dp"
+            android:layout_centerHorizontal="true"
+        />
 
     </RelativeLayout>
 </layout>
