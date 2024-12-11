@@ -18,7 +18,8 @@ class LogAdapter : RecyclerView.Adapter<LogAdapter.LogViewHolder>() {
         override fun areItemsTheSame(oldItem: Log, newItem: Log): Boolean {
             return oldItem.id == newItem.id &&
                     oldItem.logDesc == newItem.logDesc &&
-                    oldItem.logTitle == newItem.logTitle
+                    oldItem.logTitle == newItem.logTitle &&
+                    oldItem.videoPath == newItem.videoPath
         }
 
         override fun areContentsTheSame(oldItem: Log, newItem: Log): Boolean {

@@ -23,6 +23,7 @@ import com.example.badmintonai.R
 import com.example.badmintonai.databinding.FragmentEditLogBinding
 import com.example.badmintonai.model.Log
 import com.example.badmintonai.viewmodel.LogViewModel
+import java.io.File
 
 /**
  * A simple [Fragment] subclass.
@@ -51,8 +52,10 @@ class EditLogFragment : Fragment(R.layout.fragment_edit_log), MenuProvider {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        val packageName =
+            "android.resource://" + requireContext().packageName + "/" + R.raw.example_video
         val videoView = view.findViewById<VideoView>(R.id.simpleVideoView)
-        val packageName = "android.resource://" + requireContext().packageName + "/"+ R.raw.example_video
         val uri = Uri.parse(packageName)
         videoView.setVideoURI(uri)
         videoView.start()
@@ -60,7 +63,6 @@ class EditLogFragment : Fragment(R.layout.fragment_edit_log), MenuProvider {
         val mediaController = MediaController(context)
         mediaController.setAnchorView(videoView)
         videoView.setMediaController(mediaController)
-
 
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
@@ -76,7 +78,7 @@ class EditLogFragment : Fragment(R.layout.fragment_edit_log), MenuProvider {
             //val logDesc = binding.editLogDesc.text.toString().trim()
 
             if(logTitle.isNotEmpty()){
-                val log = Log(currentLog.id, logTitle, currentLog.logDesc)
+                val log = Log(currentLog.id, logTitle, currentLog.logDesc, currentLog.videoPath)
                 logViewModel.updateLog(log)
                 view.findNavController().popBackStack(R.id.homeFragment, false)
             } else {
