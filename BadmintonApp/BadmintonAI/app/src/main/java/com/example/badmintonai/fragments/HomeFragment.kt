@@ -1,6 +1,7 @@
 package com.example.badmintonai.fragments
 
 import android.os.Bundle
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -12,6 +13,8 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.badmintonai.MainActivity
@@ -56,6 +59,16 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         binding.addLogFab.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_addLogFragment)
         }
+
+        binding.addLogFab.setOnKeyListener(View.OnKeyListener {v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_N && event.action == KeyEvent.ACTION_UP) {
+                //Perform Code
+                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_addLogFragment)
+                return@OnKeyListener true
+            }
+
+            false
+        })
     }
 
     private fun updateUI(log: List<Log>?){

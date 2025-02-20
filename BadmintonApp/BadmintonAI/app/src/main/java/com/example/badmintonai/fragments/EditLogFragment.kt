@@ -3,6 +3,7 @@ package com.example.badmintonai.fragments
 import android.app.AlertDialog
 import android.net.Uri
 import android.os.Bundle
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -16,6 +17,7 @@ import android.widget.VideoView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.badmintonai.MainActivity
@@ -60,9 +62,9 @@ class EditLogFragment : Fragment(R.layout.fragment_edit_log), MenuProvider {
         videoView.setVideoURI(uri)
         videoView.start()
 
-        val mediaController = MediaController(context)
-        mediaController.setAnchorView(videoView)
-        videoView.setMediaController(mediaController)
+        //val mediaController = MediaController(context)
+        //mediaController.setAnchorView(videoView)
+        //videoView.setMediaController(mediaController)
 
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
@@ -73,20 +75,46 @@ class EditLogFragment : Fragment(R.layout.fragment_edit_log), MenuProvider {
         binding.editLogTitle.setText(currentLog.logTitle)
         binding.editLogDesc.setText(currentLog.logDesc)
 
-        binding.editLogFab.setOnClickListener{
-            val logTitle = binding.editLogTitle.text.toString().trim()
-            //val logDesc = binding.editLogDesc.text.toString().trim()
-
-            if(logTitle.isNotEmpty()){
-                val log = Log(currentLog.id, logTitle, currentLog.logDesc, currentLog.videoPath)
-                logViewModel.updateLog(log)
-                view.findNavController().popBackStack(R.id.homeFragment, false)
-            } else {
-                Toast.makeText(context, "Please enter title", Toast.LENGTH_SHORT).show()
-            }
+        binding.editLogFab.setOnClickListener {
+            saveLog()
         }
+        binding.simpleVideoView.setOnKeyListener(View.OnKeyListener {v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_PERIOD && event.action == KeyEvent.ACTION_UP) {
+                //Perform Code
+                deleteLog()
+                return@OnKeyListener true
+            }
+            if (keyCode == KeyEvent.KEYCODE_S && event.action == KeyEvent.ACTION_UP) {
+                //Perform Code
+                saveLog()
+                return@OnKeyListener true
+            }
 
+            false
+        })
+        binding.editLogTitle.setOnKeyListener(View.OnKeyListener {v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                //Perform Code
+                saveLog()
+                return@OnKeyListener true
+            }
 
+            false
+        })
+    }
+
+    private fun saveLog(){
+        val logTitle = binding.editLogTitle.text.toString().trim()
+        //val logDesc = binding.editLogDesc.text.toString().trim()
+
+        if (logTitle.isNotEmpty()) {
+            val log = Log(currentLog.id, logTitle, currentLog.logDesc, currentLog.videoPath)
+            logViewModel.updateLog(log)
+            view?.findNavController()?.popBackStack(R.id.homeFragment, false)
+            Toast.makeText(context, "Log Saved", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(context, "Please enter title", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun deleteLog(){

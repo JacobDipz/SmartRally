@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -16,6 +17,7 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.badmintonai.MainActivity
 import com.example.badmintonai.R
@@ -65,6 +67,20 @@ class AddLogFragment : Fragment(R.layout.fragment_add_log), MenuProvider {
         binding.imageView.setOnClickListener{
             openImageChooser()
         }
+        binding.imageView.setOnKeyListener(View.OnKeyListener {v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_I && event.action == KeyEvent.ACTION_UP) {
+                //Perform Code
+                openImageChooser()
+                return@OnKeyListener true
+            }
+            if (keyCode == KeyEvent.KEYCODE_S && event.action == KeyEvent.ACTION_UP) {
+                //Perform Code
+                saveLog(addLogView)
+                return@OnKeyListener true
+            }
+
+            false
+        })
 
 
     }
