@@ -20,14 +20,14 @@ Detects the shuttlecock’s hit and landing points.
 ---
 
 ### `slowfast`
-Recognizes player actions and strokes.
+Recognizes player actions.
 
 - `slowfast.py` – Uses the SlowFast model for action recognition and player stroke classification.
 
 ---
 
 ### `next_best_move`
-Predicts optimal moves using a neural network.
+Predicts the next best moves using a neural network.
 
 - `nbm_train.py` – Trains a PyTorch model using the Shuttleset dataset.
 - `nbm_predict.py` – Loads the trained model and predicts the next best move using 5 inputs:
