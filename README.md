@@ -2,7 +2,7 @@
 
 ## Folder Structure
 
-### `player_tracking/`
+### `player_tracking`
 Tracks and analyzes player positions and movements.
 
 - `court_detection.py` – Detects the badminton court using Canny edge detection and Hough lines.
@@ -11,7 +11,7 @@ Tracks and analyzes player positions and movements.
 
 ---
 
-### `tracknet/`
+### `tracknet`
 Detects the shuttlecock’s hit and landing points.
 
 - `tracknet.py` – Runs the TrackNet model to track shuttlecock movement.
@@ -19,14 +19,14 @@ Detects the shuttlecock’s hit and landing points.
 
 ---
 
-### `slowfast/`
+### `slowfast`
 Recognizes player actions and strokes.
 
 - `slowfast.py` – Uses the SlowFast model for action recognition and player stroke classification.
 
 ---
 
-### `next_best_move/`
+### `next_best_move`
 Predicts optimal moves using a neural network.
 
 - `nbm_train.py` – Trains a PyTorch model using the Shuttleset dataset.
@@ -40,7 +40,7 @@ Predicts optimal moves using a neural network.
 
 ---
 
-### `app/`
+### `app`
 The mobile app interface built with Kivy.
 
 - Sends a video input to `nbm_inputs.py`.
