@@ -43,9 +43,9 @@ Predicts the next best moves using a neural network.
 ### `app`
 The mobile app interface built with Kivy.
 
-- Sends a video input to `nbm_inputs.py`.
+- Sends a video input to `nbm_inputs.py` and recieves a list of annotated videos.
 - Displays the predicted moves and generated output videos.
-- This is the **main entry point** — running the app runs the entire pipeline.
+- This is the **main entry point** running the app runs the entire rest of the pipeline.
 
 ---
 
@@ -62,7 +62,7 @@ The mobile app interface built with Kivy.
 
 ## To Run the App
 
-1. Navigate to the `app/` folder.
+1. Go to the `app` folder.
 2. Run the app:
    ```bash
    python main.py
