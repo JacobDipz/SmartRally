@@ -1,4 +1,10 @@
-# AI Badminton Coach
+# SmartRally: AI Badminton Coach
+
+# Abstract
+This project presents an AI-powered model coaching system that helps badminton players improve their skills by analyzing gameplay videos with computer vision and deep learning techniques. The system focuses on three main aspects of badminton performance: the player’s actions, the shuttlecock’s movement path, and the player’s positions on court. It gives personalized feedback and recommends the best action to take in each situation, which is called the Next Best Move (NBM). The neural network is trained to predict the NBM accuracy reached an accuracy of about 70%. 
+To track where the shuttlecock is hit and where it lands, the system uses a tool called TrackNet. Player movements and locations are calculated using a YOLOv11 OpenPose model. The results are displayed in a video that includes color coded visual feedback showing the player’s shot, direction they are aiming at, and color coded captions that mark important information.
+The project also includes a mobile app developed with Kivy, which allows the user to upload their videos, view a series of videos with the generated feedback, and store the generated analysis for future reference. Overall, this system provides a low cost and accessible way for badminton players to receive training and improve their performance using AI.
+
 
 ## Folder Structure
 
